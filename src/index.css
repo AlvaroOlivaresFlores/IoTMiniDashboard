@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark-color: #13141f;
+  --bg-color: #b28424;
+  --bg-color2: #3c4852;
+  --bg-color3: #1e2f3a;
+  --bg-color-light: #d6a607;
+  --bg-color2-light: #4a5864;
+  --bg-color3-light: #283f4d;
+  --text-color: #fff;
+}
+
+body {
+  background-color: var(--bg-color3);
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  margin: auto;
+}

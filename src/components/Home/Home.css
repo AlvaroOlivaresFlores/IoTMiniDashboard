@@ -1,0 +1,97 @@
+.title {
+  text-align: center;
+  margin: 1.5em 0 1.5em 0;
+}
+.title img {
+  width: 20%;
+}
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+.table-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3em;
+}
+
+.table-title div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-title input {
+  border: none;
+  border: 2px solid var(--bg-color2);
+  border-radius: 0.5em;
+  background-color: var(--bg-color3-light);
+  padding: 0.5em 1em 0.5em 1em;
+  width: 350px;
+}
+
+.inp-search input {
+  color: white;
+}
+
+.table-title i {
+  margin-right: 0.5em;
+}
+
+.table-title h2 {
+  font-size: 1.2em;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.btn {
+  background-color: var(--bg-color-light);
+  color: var(--text-color);
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.5em 1em 0.5em 1em;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: 300ms background-color ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--bg-color);
+}
+
+.table-title h2 span {
+  font-weight: 500;
+  color: var(--bg-color-light);
+}
+
+hr {
+  margin-bottom: 1em;
+}
+
+.add-devices {
+  margin: auto;
+  margin-top: 2em;
+  display: flex;
+  justify-content: right;
+  column-gap: 2em;
+  align-items: center;
+  width: 50%;
+}
+
+.add-devices input {
+  padding: .5em 1em .5em 1em;
+  border-radius: .5em;
+  border: 1.5px solid var(--bg-color2);
+  background-color: var(--bg-color3-light);
+  color: white;
+  font-size: 1.05em;
+  width: 100%;
+}
+
+.add-devices input:focus {
+  outline: none;
+  border: 1.5px solid var(--bg-color-light)
+}

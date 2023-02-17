@@ -1,0 +1,54 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .center {
+    .div-img {
+      margin: auto;
+      margin-bottom: 1em;
+      img {
+        width: 350px;
+      }
+    }
+    .div-form {
+      background-color: var(--bg-color);
+      padding: 2em;
+      border-radius: 0.5em;
+      margin-bottom: 10em;
+      form {
+        div {
+          margin-bottom: 1em;
+          display: flex;
+          flex-direction: column;
+          label {
+            margin-bottom: 0.4em;
+          }
+          input[type="email"],
+          input[type="password"] {
+            padding: 1em;
+            border-radius: 0.5em;
+            border: none;
+            &:focus {
+              outline: 2px solid var(--bg-color3-light);
+            }
+          }
+          button[type="submit"] {
+            padding: 1em 0;
+            border-radius: 0.5em;
+            border: none;
+            background-color: var(--bg-color3-light);
+            cursor: pointer;
+            color: white;
+            margin-bottom: 1em;
+          }
+          a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

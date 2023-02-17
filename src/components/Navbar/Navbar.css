@@ -1,0 +1,21 @@
+.container-navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  padding: 1em 2em 1em 1em;
+}
+.container-navbar div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container-navbar div p {
+  margin-left: 0.5em;
+}
+.container-navbar div a {
+  cursor: pointer;
+  transition: color 200ms ease-out;
+}
+.container-navbar div a:hover {
+  color: var(--bg-color3-light);
+}/*# sourceMappingURL=Navbar.css.map */

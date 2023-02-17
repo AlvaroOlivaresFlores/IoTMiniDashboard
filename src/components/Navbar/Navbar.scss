@@ -1,0 +1,21 @@
+.container-navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  padding: 1em 2em 1em 1em;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        margin-left: .5em;
+    }
+    a {
+        cursor: pointer;
+        transition: color 200ms ease-out;
+        &:hover {
+            color: var(--bg-color3-light);
+        }
+    }
+  }
+}

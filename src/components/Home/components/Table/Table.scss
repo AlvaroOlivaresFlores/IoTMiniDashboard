@@ -1,0 +1,109 @@
+.div-table {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  overflow-x: auto;
+  border-radius: 0.5em;
+  margin-bottom: 4rem;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  //table-layout: fixed;
+}
+
+th {
+  background-color: var(--bg-color);
+  text-align: left;
+  padding: 1em 1em 1em 1em;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 700;
+}
+
+td,
+th {
+  width: 100%;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+td span {
+  color: var(--bg-color);
+}
+
+tr {
+  background-color: var(--bg-color2-light);
+}
+
+tr:nth-child(even) {
+  background-color: var(--bg-color3-light);
+}
+
+tr:last-child {
+  background-color: var(--bg-color);
+}
+
+.btn-download {
+  padding: 0.5em 1em 0.5em 1em;
+  border: none;
+  background-color: var(--bg-color);
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  &:hover {
+    background-color: var(--bg-color-light);
+  }
+}
+
+.btn-download-disable {
+  padding: 0.5em 1em 0.5em 1em;
+  border: none;
+  background-color: var(--bg-color);
+  opacity: .5;
+  color: var(--dark-color);
+  border-radius: 0.5em;
+  cursor: not-allowed;
+}
+.checkbox {
+  text-align: center;
+}
+
+.slt-status {
+  padding: 0.5em 1em;
+  background-color: var(--bg-color-2);
+  border-radius: 0.5em;
+  color: orange;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  option {
+    color: white;
+    background-color: var(--bg-color3-light);
+  }
+}
+
+// SCROLLBAR
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-color2-light);
+  border-radius: 0.5em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-color2);
+}
