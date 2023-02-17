@@ -1,7 +1,6 @@
 import "./Table.css";
 import { useState, useEffect } from "react";
-import { collection } from "firebase/firestore";
-import { onSnapshot } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../../../firebase";
 
 export default function Table(props) {
@@ -16,13 +15,27 @@ export default function Table(props) {
           const datos = {
             ...doc.data(),
             id: doc.id,
+            checked: false,
           };
           return datos;
         });
         const dataSortByDate = data.sort((a, b) => {
-          const dateA = new Date(a.hora);
-          const dateB = new Date(b.hora);
-          return dateA - dateB;
+          // Format date: 2024-01-18 14:55:55
+          const yearA = a.hora.split("-")[0];
+          const monthA = a.hora.split("-")[1];
+          const dayA = a.hora.split("-")[2].split(/(\s+)/)[0];
+          const hourA = a.hora.split("-")[2].split(/(\s+)/)[2].split(":")[0];
+          const minuteA = a.hora.split("-")[2].split(/(\s+)/)[2].split(":")[1];
+          const secondA = a.hora.split("-")[2].split(/(\s+)/)[2].split(":")[2];
+          const dateA = new Date( yearA, monthA, dayA, hourA, minuteA, secondA);
+          const yearB = b.hora.split("-")[0];
+          const monthB = b.hora.split("-")[1];
+          const dayB = b.hora.split("-")[2].split(/(\s+)/)[0];
+          const hourB = b.hora.split("-")[2].split(/(\s+)/)[2].split(":")[0];
+          const minuteB = b.hora.split("-")[2].split(/(\s+)/)[2].split(":")[1];
+          const secondB = b.hora.split("-")[2].split(/(\s+)/)[2].split(":")[2];
+          const dateB = new Date( yearB, monthB, dayB, hourB, minuteB, secondB);
+          return dateB - dateA;
         });
         setData(dataSortByDate);
       });
@@ -40,18 +53,19 @@ export default function Table(props) {
             <th></th>
             <th>N</th>
             <th>sensor name</th>
-            <th>temperature</th>
+            <th>temp</th>
             <th>humidity</th>
-            <th>radiation</th>
+            <th>rad</th>
             <th>luxmeter</th>
-            <th>particle 1</th>
-            <th>particle 10</th>
-            <th>particle 2.5</th>
+            <th>PTCL 1</th>
+            <th>PTCL 10</th>
+            <th>PTCL 2.5</th>
             <th>bateria</th>
             <th>co2</th>
             <th>latitude</th>
             <th>longitude</th>
             <th>hora</th>
+            <th>hora server</th>
             <th>tec</th>
             <th>lora ID</th>
           </tr>
@@ -85,6 +99,7 @@ export default function Table(props) {
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -94,24 +109,40 @@ export default function Table(props) {
 
 function RowTable(props) {
   const data = props.data;
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleDelete = (e) => {
     if (e.currentTarget.checked) {
-      props.setDeleteDevices([...props.deleteDevices, data.id]);
-      props.deleteDevices.forEach(element => {
-        console.log(element);
-      });
+      if (props.deleteDevices.length === 0) {
+        props.setDeleteDevices([
+          { id: data.id, name: data.sensor_name, check: setIsChecked },
+        ]);
+        setIsChecked(true);
+      } else {
+        props.setDeleteDevices([
+          ...props.deleteDevices,
+          { id: data.id, name: data.sensor_name, check: setIsChecked },
+        ]);
+        setIsChecked(true);
+      }
     } else {
-      // alert('not checked');
-      props.setDeleteDevices(props.deleteDevices.filter((id) => id !== id));
+      props.setDeleteDevices(
+        props.deleteDevices.filter((d) => d.id !== data.id)
+      );
+      setIsChecked(false);
     }
-    console.log(props.deleteDevices);
   };
 
   return (
     <tr>
       <td>
-        <input onChange={handleDelete} type="checkbox" name="" id="" />
+        <input
+          checked={isChecked}
+          onChange={(e) => handleDelete(e)}
+          type="checkbox"
+          name=""
+          id=""
+        />
       </td>
       <td>{props.index}</td>
       <td>{data.sensor_name}</td>
@@ -127,6 +158,7 @@ function RowTable(props) {
       <td>{data.latitude}</td>
       <td>{data.longitude}</td>
       <td>{data.hora}</td>
+      <td>{data.hora_server}</td>
       <td>{data.tec}</td>
       <td>{data.lora_id}</td>
     </tr>

@@ -42,19 +42,21 @@ table {
 }
 
 th {
+  text-align: center;
   background-color: var(--bg-color);
   text-align: left;
-  padding: 1em 1em 1em 1em;
+  padding: 0.7em 0.5em;
   text-transform: uppercase;
   color: black;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 td,
 th {
-  width: 100%;
+  text-align: center;
   word-break: normal;
   white-space: nowrap;
+  font-size: 0.95em;
 }
 
 td {
@@ -103,6 +105,7 @@ tr:last-child {
 .checkbox {
   text-align: center;
 }
+
 
 .slt-status {
   padding: 0.5em 1em;

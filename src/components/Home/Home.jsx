@@ -5,7 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import {
   onSnapshot,
   doc,
-  setDoc,
+  deleteDoc,
   collection,
   addDoc,
 } from "firebase/firestore";
@@ -28,6 +28,14 @@ export function BackdoorData() {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleDelete = () => {
+    deleteDevices.forEach(async (element) => {
+      element.check(false);
+      await deleteDoc(doc(db, element.name, element.id));
+    });
+    setDeleteDevices([]);
   };
 
   useEffect(() => {
@@ -95,11 +103,21 @@ export function BackdoorData() {
             />
           </div>
           <div>
-            <button className="btn">Eliminar datos</button>
+            <button onClick={() => handleDelete()} className="btn">
+              Eliminar datos
+            </button>
           </div>
         </div>
         <hr />
-        {deviceId ? <Table deleteDevices={deleteDevices} setDeleteDevices={setDeleteDevices} deviceId={deviceId}></Table> : <></>}
+        {deviceId ? (
+          <Table
+            deleteDevices={deleteDevices}
+            setDeleteDevices={setDeleteDevices}
+            deviceId={deviceId}
+          ></Table>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
